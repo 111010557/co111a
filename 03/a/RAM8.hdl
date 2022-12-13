@@ -16,6 +16,7 @@ CHIP RAM8 {
 
     PARTS:
     // Put your code here:
+    //此程式是參考圖片所完成的 https://nand2tetris-hdl.github.io
     DMux8Way(in=load, sel=address, a=r0, b=r1, c=r2, d=r3, e=r4, f=r5, g=r6, h=r7);
     Register(in=in, load=r0, out=r0Out);
     Register(in=in, load=r1, out=r1Out);
