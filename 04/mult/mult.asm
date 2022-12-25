@@ -7,27 +7,21 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
 // Put your code here.
-此程式參考:https://github.com/havivha/Nand2Tetris/blob/master/04/mult/Mult.asm
+@0
+D=A
 @2
-    M=0     // R2 = 0
-    @i
-    M=0     // i=0
-(LOOP)
-    @i
-    D=M     // D=i
-    @0
-    D=D-M   // D=i-R0
-    @END
-    D;JGE    // if i-R0 >= 0 goto END
-
-    @1
-    D=M     // D=R1
-    @2
-    M=D+M   // R2=R2+R1
-    @i
-    M=M+1   // i=i+1
-    @LOOP
-    0;JMP   // Repeat
-(END)
-    @END
-    0;JMP
+M=D
+@0
+D=M
+@16
+D;JLE
+@1
+D=M
+@2
+M=D+M
+@0
+M=M-1
+@4
+0;JMP
+@16
+0;JMP
