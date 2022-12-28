@@ -14,6 +14,7 @@ CHIP HalfAdder {
 
     PARTS:
     // Put you code here:
+    // 此程式參考https://github.com/havivha/Nand2Tetris/blob/master/02/HalfAdder.hdl 
     Xor(a=a, b=b, out=sum);
     And(a=a, b=b, out=carry);
 }

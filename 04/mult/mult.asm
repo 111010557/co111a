@@ -7,6 +7,7 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
 // Put your code here.
+//此程式參考影片:https://www.youtube.com/watch?v=aC-IeMoZN4M 
 @0
 D=A
 @2
