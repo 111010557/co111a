@@ -40,37 +40,36 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
-    Not(in=instruction[15], out=Ainstruction);
-    Not(in=Ainstruction, out=Cinstruction);
-    
-    And(a=Cinstruction, b=instruction[5], out=ALUtoA);   
-    Mux16(a=instruction, b=ALUout, sel=ALUtoA, out=Aregin);
-    
-    Or(a=Ainstruction, b=ALUtoA, out=loadA);    
-    
-    Mux16(a=Aout, b=inM, sel=instruction[12], out=AMout);  
+    //此程式參考葉思妤同學的程式碼:https://github.com/siyu0927/co111a/blob/main/05/CPU.hdl 
+    And16(a=true,b=instruction,out[15]=isC,out[12]=a,out[11]=c1,out[10]=c2,out[9]=c3,out[8]=c4,out[7]=c5,out[6]=c6,
+    out[5]=d1,out[4]=d2,out[3]=d3,out[2]=j1,out[1]=j2,out[0]=j3);
 
-    And(a=Cinstruction, b=instruction[4], out=loadD);
-    DRegister(in=ALUout, load=loadD, out=Dout);    // load the D register from ALU
+    Mux16(a=instruction,b=back,sel=isC,out=i1);
+    Mux16(a=aout,b=inM,sel=a,out=i2);
     
-    ALU(x=Dout, y=AMout, zx=instruction[11], nx=instruction[10], 
-        zy=instruction[9], ny=instruction[8], f=instruction[7],
-        no=instruction[6], out=ALUout, zr=ZRout, ng=NGout); 
-        
-    // Set outputs for writing memory
-    Or16(a=false, b=Aout, out[0..14]=addressM);
-    Or16(a=false, b=ALUout, out=outM);
-    And(a=Cinstruction, b=instruction[3], out=writeM);
-    
-    // calc PCload & PCinc - whether to load PC with A reg
-    And(a=ZRout, b=instruction[1], out=jeq);   
-    And(a=NGout, b=instruction[2], out=jlt);   
-    Or(a=ZRout, b=NGout, out=zeroOrNeg);
-    Not(in=zeroOrNeg, out=positive);            
-    And(a=positive, b=instruction[0], out=jgt); 
-    Or(a=jeq, b=jlt, out=jle);
-    Or(a=jle, b=jgt, out=jumpToA);              
-    And(a=Cinstruction, b=jumpToA, out=PCload); 
-    Not(in=PCload, out=PCinc);                 
-    PC(in=Aout, inc=PCinc, load=PCload, reset=reset, out[0..14]=pc);
+    //A register
+    Not(in=isC,out=isA);
+    And(a=isC,b=d1,out=alutoa);
+    Or(a=isA,b=alutoa,out=aload);
+    ARegister(in=i1,load=aload,out=aout,out[0..14]=addressM);
+
+    //D register
+    And(a=isC,b=d2,out=dload);
+    DRegister(in=back,load=dload,out=dout);
+
+    //ALU
+    ALU(x=dout,y=i2,zx=c1,nx=c2,zy=c3,ny=c4,f=c5,no=c6,out=back,out=outM,zr=zr,ng=ng);
+
+    //JUMP
+    Or(a=ng,b=zr,out=ngzr);
+    Not(in=ngzr,out=gt);
+    And(a=ng,b=j1,out=passl);
+    And(a=zr,b=j2,out=passe);
+    And(a=gt,b=j3,out=passg);
+    Or(a=passl,b=passe,out=passle);
+    Or(a=passle,b=passg,out=pass);
+    And(a=isC,b=pass,out=pcload);
+    PC(in=aout,load=pcload,inc=true,reset=reset,out[0..14]=pc);
+
+    And(a=isC,b=d3,out=writeM);
 }
