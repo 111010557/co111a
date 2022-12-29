@@ -11,6 +11,7 @@
 
 程式複製資料:| HalfAdder:https://github.com/havivha/Nand2Tetris/blob/master/02/HalfAdder.hdl
             | ALU:https://github.com/havivha/Nand2Tetris/blob/master/02/ALU.hdl 
+            | Bit:https://github.com/havivha/Nand2Tetris/blob/master/03/a/Bit.hdl 
             | PC:https://github.com/havivha/Nand2Tetris/blob/master/03/a/PC.hdl
             | RAM8 RAM64 RAM4K RAM16K RAM512:https://nand2tetris-hdl.github.io
             | mult:https://www.youtube.com/watch?v=aC-IeMoZN4M 
