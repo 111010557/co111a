@@ -10,8 +10,11 @@
 課程教材 | https://gitlab.com/cccnqu111/co
 
 程式複製資料:| HalfAdder:https://github.com/havivha/Nand2Tetris/blob/master/02/HalfAdder.hdl
+            | PC:https://github.com/havivha/Nand2Tetris/blob/master/03/a/PC.hdl
             | RAM8 RAM64 RAM4K RAM16K RAM512:https://nand2tetris-hdl.github.io
             | mult:https://www.youtube.com/watch?v=aC-IeMoZN4M 
             | computer:https://github.com/havivha/Nand2Tetris/blob/master/05/Computer.hdl 
             | CPU:https://github.com/siyu0927/co111a/blob/main/05/CPU.hdl 
             | Memory:https://github.com/havivha/Nand2Tetris/blob/master/05 
+
+程式參考圖片:| 第二章跟第三章(Bit Register)
