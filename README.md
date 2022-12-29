@@ -14,9 +14,10 @@
             | Bit:https://github.com/havivha/Nand2Tetris/blob/master/03/a/Bit.hdl 
             | PC:https://github.com/havivha/Nand2Tetris/blob/master/03/a/PC.hdl
             | RAM8 RAM64 RAM4K RAM16K RAM512:https://nand2tetris-hdl.github.io
+            | Fill:https://github.com/havivha/Nand2Tetris/blob/master/04/fill/Fill.asm
             | mult:https://www.youtube.com/watch?v=aC-IeMoZN4M 
             | computer:https://github.com/havivha/Nand2Tetris/blob/master/05/Computer.hdl 
             | CPU:https://github.com/siyu0927/co111a/blob/main/05/CPU.hdl 
             | Memory:https://github.com/havivha/Nand2Tetris/blob/master/05 
 
-程式參考圖片:| 第二章跟第三章(Bit Register)
+程式參考圖片:| 第二章跟第三章(Register)
